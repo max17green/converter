@@ -1,0 +1,69 @@
+body {
+  padding: 0;
+  background-image: url("../img/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  -webkit-background-size: cover;
+          background-size: cover; }
+
+.bg {
+  margin: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: .5; }
+
+main {
+  text-align: center;
+  width: 100%;
+  position: absolute; }
+
+input[type="file"] {
+  margin-bottom: 30px;
+  display: inline; }
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+  body {
+    -webkit-background-size: 230% 230%;
+            background-size: 230%; }
+  h1 {
+    font-size: 60px; }
+  h2 {
+    font-size: 40px;
+    margin-bottom: 40px; }
+  input {
+    font-size: 30px; }
+  input[type="submit"] {
+    font-size: 30px;
+    padding: 10px 20px; } }
+
+@media screen and (max-aspect-ratio: 9 / 16) {
+  body {
+    -webkit-background-size: 285% 285%;
+            background-size: 285%; }
+  h1 {
+    font-size: 30px; }
+  h2 {
+    font-size: 25px;
+    margin-bottom: 20px; }
+  input {
+    font-size: 15px; }
+  input[type="submit"] {
+    font-size: 20px;
+    padding: 10px 20px; } }
+
+@media screen and (max-width: 340px) {
+  body {
+    -webkit-background-size: 370% 370%;
+            background-size: 370%; }
+  h1 {
+    font-size: 25px; }
+  h2 {
+    font-size: 20px;
+    margin-bottom: 20px; }
+  input {
+    font-size: 15px; }
+  input[type="submit"] {
+    font-size: 15px;
+    padding: 10px 20px; } }

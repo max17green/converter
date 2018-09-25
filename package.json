@@ -1,0 +1,24 @@
+{
+  "name": "projectvue",
+  "version": "1.0.0",
+  "description": "My first vue project",
+  "main": "gulp.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "no"
+  },
+  "keywords": [
+    "vue.js"
+  ],
+  "author": "Maxim",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.24.7",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-sass": "^4.0.1"
+  }
+}
