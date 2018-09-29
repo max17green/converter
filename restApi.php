@@ -1,5 +1,6 @@
 <?php
-	$name = $_GET["name"];
+    //Запрос http://domen1/restApi.php?name=8091431
+	$name = htmlspecialchars($_GET["name"]);
 	$dir = "treatment/".$name."/images";
 	$files = scandir($dir);
 	//print_r($files);
