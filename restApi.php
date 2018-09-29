@@ -1,6 +1,6 @@
 <?php
 	$name = $_GET["name"];
-	$dir = "./treatment/".$name."/images";
+	$dir = "treatment/".$name."/images";
 	$files = scandir($dir);
 	//print_r($files);
 	foreach($files as $file) {
