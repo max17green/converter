@@ -1,18 +1,23 @@
 <?php
-//echo $_GET["name"];
-
 class ArhiveClass{
-    public $zip;
-    private $pathdir;
+    private $zip;
+    public $pathdir;
     private $nameArhive;
-    function __construct() {
-        $this->pathdir = htmlspecialchars($_GET["name"]); // путь к папке, файлы которой будем архивировать
-        $this->nameArhive = time().'.zip'; //название архива
-        $this->zip = new ZipArchive; // класс для работы с архивами
+    function init($par) {
+
+        if (!empty($par) && $par != null) {
+            if (file_exists($par)) {
+                $this->pathdir = htmlspecialchars($par); // путь к папке, файлы которой будем архивировать
+                $this->nameArhive = time().'.zip'; //название архива
+                $this->zip = new ZipArchive; // класс для работы с архивами
+                //echo $this->pathdir;
+                return true;
+            }
+        }
+        
     }
     function create() {
-        $k = $this->zip -> open($this->nameArhive, ZipArchive::CREATE);
-        return $k;
+        return $this->zip -> open($this->nameArhive, ZipArchive::CREATE);
     }
     function addIn() {
         $dir = opendir($this->pathdir); // открываем папку с файлами
@@ -20,7 +25,7 @@ class ArhiveClass{
         while( $file = readdir($dir)){ // перебираем все файлы из нашей папки
 
                 if($file == '.' || $file == '..' || is_dir($this->pathdir."/".$file)){
-                 continue;
+                    continue;
                 } else {
                     //echo $pathdir."/".$file."\n";
                     $this->zip -> addFile($this->pathdir."/".$file, $file); // и архивируем
@@ -28,8 +33,6 @@ class ArhiveClass{
                     $this->zip -> addGlob("assets/*.*");
                     $this->zip -> addGlob("assets/fonts/*.*");
                     $this->zip -> addGlob($this->pathdir."/images/*.jpg");
-                    //echo("Заархивирован: " . $pathdir.$file) , '<br/>';
-
                 }
         }
 
@@ -46,10 +49,11 @@ class ArhiveClass{
 }
 
 $a = new ArhiveClass();
-if ($a->create()) {
-    $a->addIn();
-    $a->output();
-} else {
-    $a->printError();
-}
+if ($a->init($_GET["name"])) {
+    if ($a->create()) {
+        //echo "верно";
+        $a->addIn();
+        $a->output();
+    } else $a->printError();
+} else $a->printError();
 ?>
